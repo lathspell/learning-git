@@ -4,26 +4,40 @@ GIT
 Basics
 ------
 
-    git init                    Erzeugt ein Repo
-                                Erstellt .git Verzeichnis mit Datenbank
+Repository Erstellen:
+    git init                    Erzeugt ein Repo, d.h. ein .git Verzeichnis
+    git clone                   Erzeugt ein Repository auf Basis eines bestehenden, local oder remote repository.
 
-    git add <FILES>             Aktueller Stand -> Objekt und Eintrag in Index
+Transaktionen
+    git diff                    Unterschiede modifizierter Dateien, die noch nicht mit "git add" hinzugefügt wurden, zu ihrem letzten Commit (HEAD).
+    git diff --cached/--staged  Unterschiede von mit "git add" markierten Dateien und ihrem letzten Commit (HEAD).
+
+    git add <FILES>             Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
+                                (Überflüssige, weil unreferenzierte, Objekte werden durch automatisches "git gc" wieder gelöscht)
+
+    git reset <FILES>           Löscht Objekt und Index-Eintrag für Objekt ("unstage for commit"), behält aber lokale Datei.
 
     git commit                  Alle Änderungen laut Index in einem Commit-Objekt zusammenfassen
+                                (Technisch: "git write-tree" gefolgt von "git write-commit")
 
 Konfiguration
 -------------
-    
-    CLI                         Rangfolge Konfigurationsdateien 
-    .git/config
-    ~/.gitconfig
-    /etc/gitconfig              
+
+    Rangfolge Konfigurationsdateien 
+        --param                 CLI 
+        .git/config             "local"
+        ~/.gitconfig            "global"
+        /etc/gitconfig          "system"
+
+    git config --global --list
+    git config user.name "Max Mustermann"
+    git config user.email "mmustermann@example.com"
     
     .git/description            ???
 
     .gitignore                  Verzeichnis-lokale Ignorier-Liste, ist selbst aber im SCM                         
     
-    export GIT_EDITOR=vim
+    export GIT_EDITOR=vim       #
 
 
 Konzepte
@@ -37,18 +51,28 @@ Konzepte
 
     Datenbereiche:
     * Index/Cache
+        Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
     * Objekte
 
-        $ file ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443
-        ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443: zlib compressed data
-        
-        $ cat ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443 | zlib-flate -uncompress  
+        $ zlib-flate -uncompress < .git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443
         blob 7.*.swp
 
-        Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
+        $ zlib-flate -uncompress < .git/objects/b0/7237be0ee6ede33983935620532aeaf581e14a | strings
+        tree 75
+        100644 .gitignore
+        \Q8x=O;$C                    // Hash von .gitignore (0a1e..43), mit "od -xa" verifizierbar
+        100644 README.md
+        .........                    // Hash von README.md
 
+        $ zlib-flate -uncompress < .git/objects/c8/c3c96e9f776d2d2e5e8fc097104818a68d8355
+        commit 222
+        tree b07237be0ee6ede33983935620532aeaf581e14a
+        parent fb21eb2b5c0dba041380ab8e48f837c1ba26dbc8
+        author Christian Brunotte <cb@lathspell.de> 1436045859 +0200
+        committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
 
-xxxxxxxxxxxxxxxxxxxxx
+        3
+
 
 Unterschiede zu SVN
 -------------------
@@ -61,3 +85,19 @@ Unterschiede zu SVN
         GIT: merkt sich nur einen Haufen von Dateien mit Attributen zu denen auch der Pfad gehört, wird eine Datei verschoben, ändert sich nur eines ihrer Attribute. Doppelte Dateien werden
         nur einmal gespeichert, aber mit zwei Verweisen im Index.
 
+
+GUI
+---
+    gitk
+    git-cola
+
+Links
+-----
+    
+    GIT Cheat Sheet
+    https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
+
+    Interaktive Cheat Sheet
+    http://ndpsoftware.com/git-cheatsheet.html
+
+    
