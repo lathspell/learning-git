@@ -7,9 +7,9 @@ Basics
     git init                    Erzeugt ein Repo
                                 Erstellt .git Verzeichnis mit Datenbank
 
-    git add <FILES>             Aktueller Stand -> Index
+    git add <FILES>             Aktueller Stand -> Objekt und Eintrag in Index
 
-    git commit                  Alle Änderungen im Index zusammenfassen
+    git commit                  Alle Änderungen laut Index in einem Commit-Objekt zusammenfassen
 
 Konfiguration
 -------------
@@ -38,6 +38,17 @@ Konzepte
     Datenbereiche:
     * Index/Cache
     * Objekte
+
+        $ file ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443
+        ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443: zlib compressed data
+        
+        $ cat ./.git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443 | zlib-flate -uncompress  
+        blob 7.*.swp
+
+        Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
+
+
+xxxxxxxxxxxxxxxxxxxxx
 
 Unterschiede zu SVN
 -------------------
