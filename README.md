@@ -10,15 +10,21 @@ Repository Erstellen:
 
 Transaktionen
     git diff                    Unterschiede modifizierter Dateien, die noch nicht mit "git add" hinzugefügt wurden, zu ihrem letzten Commit (HEAD).
-    git diff --cached/--staged  Unterschiede von mit "git add" markierten Dateien und ihrem letzten Commit (HEAD).
+    git diff --cached           Unterschiede von mit "git add" markierten Dateien und ihrem letzten Commit (HEAD).
 
-    git add <FILES>             Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
+    git add <FILE>              Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
                                 (Überflüssige, weil unreferenzierte, Objekte werden durch automatisches "git gc" wieder gelöscht)
 
-    git reset <FILES>           Löscht Objekt und Index-Eintrag für Objekt ("unstage for commit"), behält aber lokale Datei.
+    git reset <FILE>            Löscht Objekt und Index-Eintrag für Objekt ("unstage for commit"), behält aber lokale Datei.
+    git reset --hard <FILE>     Löscht sowohl Objekt/Index als auch die lokalen Änderungen
+
+    git rm <FILE>               Löscht lokale Datei und markiert sie zur Löschung im Index
+    git rm --cached <FILE>      Markiert Datei zur Löschung im Index, behält sie aber lokal.
+    git mv <FILE> <FILE>        Benennt eine lokale Datei um und passt den Index entsprechend an.
 
     git commit                  Alle Änderungen laut Index in einem Commit-Objekt zusammenfassen
                                 (Technisch: "git write-tree" gefolgt von "git write-commit")
+
 
 Konfiguration
 -------------
@@ -35,7 +41,8 @@ Konfiguration
     
     .git/description            ???
 
-    .gitignore                  Verzeichnis-lokale Ignorier-Liste, ist selbst aber im SCM                         
+    .gitignore                  Verzeichnis-lokale Ignorier-Liste, ist selbst aber im SCM
+    git ls-files --other --ignored --exclude-standard       Zeigt alle irgendwie ignorierten Dateien.
     
     export GIT_EDITOR=vim       #
 
