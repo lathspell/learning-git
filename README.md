@@ -1,6 +1,19 @@
 GIT
 ===
 
+Hilfe
+-----
+
+    git --help                  Liste der wichtigsten Befehle
+    git --help -a               Liste aller Befehler (scary)
+    git --help -m               Liste alle Konzepe zu denen es eingebaute Hilfe gibt
+
+    git help glossary           Erklärung der Begriffe rund um GIT
+    git help revisions          Erklärung der Revionskürzel wie "HEAD^"
+    git help tutorial           Ein kleines Tutorial
+
+    . /usr/share/bash-completion/completions/git    Aktiviert Bash-Completion für Git
+    
 Basics
 ------
 
@@ -8,10 +21,18 @@ Repository Erstellen:
     git init                    Erzeugt ein Repo, d.h. ein .git Verzeichnis
     git clone                   Erzeugt ein Repository auf Basis eines bestehenden, local oder remote repository.
 
-Transaktionen
+Änderungen ansehen
     git diff                    Unterschiede modifizierter Dateien, die noch nicht mit "git add" hinzugefügt wurden, zu ihrem letzten Commit (HEAD).
     git diff --cached           Unterschiede von mit "git add" markierten Dateien und ihrem letzten Commit (HEAD).
 
+    git log                     Zeigt die Historie des aktuellen Branch
+    git log --follow <FILE>     Zeigt die Historie einer Datei inklusive Umbenennungen
+    
+    git show                    Zeigt aktuelle Änderungen
+    git show <COMMIT>           Zeigt Änderungen eines Commits
+    git show-branch --more=10   Zeigt die letzten 10 Commit-Messages
+
+Transaktionen
     git add <FILE>              Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
                                 (Überflüssige, weil unreferenzierte, Objekte werden durch automatisches "git gc" wieder gelöscht)
 
@@ -25,6 +46,28 @@ Transaktionen
     git commit                  Alle Änderungen laut Index in einem Commit-Objekt zusammenfassen
                                 (Technisch: "git write-tree" gefolgt von "git write-commit")
 
+Branches
+    git branch                  Listet alle Branches
+    git branch <BRANCH>         Erstellt einen neuen Branch
+    
+    
+(internals) Datenbank angucken
+------------------------------
+
+    git ls-files --stage                    Zeigt Hash aller Dateien an
+
+    git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
+
+    zlib-flate -uncompress < <OBJ-FILE>     Datei entpacken und angucken, könnte Binär sein!
+    git cat-file -t <HASH>                  Typ dieses BLOBs anzeigen
+    git cat-file -p <HASH>                  Inhalt dieses BLOBs anzeigen
+
+    git hash-object <FILE>                  Berechnet nur den aktuellen Hash
+    git hash-object --write <FILE>          Erstellt BLOB Objekt und liefert Hash (Teil von "add").
+
+    git write-tree                          Erstellt Tree Objekt der aktuellen Dateien und liefert Hash (Teil von "commit").
+    git commit-tree <HASH>                  Erstellt Commit Objekt für einen Tree (Teil von "commit").
+
 
 Konfiguration
 -------------
@@ -35,7 +78,7 @@ Konfiguration
         ~/.gitconfig            "global"
         /etc/gitconfig          "system"
 
-    git config --global --list
+    git config [|--local|--global|--system] --list
     git config user.name "Max Mustermann"
     git config user.email "mmustermann@example.com"
     
@@ -46,6 +89,9 @@ Konfiguration
     
     export GIT_EDITOR=vim       #
 
+
+    git config --global alias.my-show-graph \               Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
+        'log --graph --abbrev-commit --pretty=oneline'
 
 Konzepte
 --------
