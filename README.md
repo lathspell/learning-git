@@ -63,6 +63,10 @@ Fehler suchen
     git bisect bad [<COMMIT>]   Sagt bisect, daß eine bzw. die aktuelle Version nicht funktioniert; wechselt den Standpunkt
     git bisect log              Zeigt alle bisher als gut oder schlecht markierten Versionen
     git bisect reset            Beendet das Bisect
+
+    git blame <FILE>            letzte Anderungen zeigen
+
+    git log -S<TEXT> -p         Zeigt alle commits bei denen TEXT im Diff auftaucht ("Pickaxe" Suche)
    
 (internals) Datenbank angucken
 ------------------------------
