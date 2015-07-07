@@ -46,6 +46,7 @@ Transaktionen
 
     git commit                  Alle Änderungen laut Index in einem Commit-Objekt zusammenfassen
                                 (Technisch: "git write-tree" gefolgt von "git write-commit")
+    git commit -a               Commit mit vorherigendem "git add"
 
 Branches
     git branch                  Listet alle Branches
