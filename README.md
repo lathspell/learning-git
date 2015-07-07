@@ -27,6 +27,7 @@ Repository Erstellen:
 
     git log                     Zeigt die Historie des aktuellen Branch
     git log --follow <FILE>     Zeigt die Historie einer Datei inklusive Umbenennungen
+    git log -5 --decorate=full  Zeigt die letzten 5 Einträge der Historie mit Tags
     
     git show                    Zeigt aktuelle Änderungen
     git show <COMMIT>           Zeigt Änderungen eines Commits
@@ -50,7 +51,18 @@ Branches
     git branch                  Listet alle Branches
     git branch <BRANCH>         Erstellt einen neuen Branch
     
-    
+Remote Repositories
+    git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
+
+Fehler suchen
+-------------
+
+    git bisect start            Erzeugt einen Internen-Branch auf Basis von HEAD mit einigen Meta-Daten für die Binary-Section.
+    git bisect good [<COMMIT>]  Sagt bisect das eine bzw. die aktuelle Version funktioniert; welchselt den Standpunkt
+    git bisect bad [<COMMIT>]   Sagt bisect, daß eine bzw. die aktuelle Version nicht funktioniert; wechselt den Standpunkt
+    git bisect log              Zeigt alle bisher als gut oder schlecht markierten Versionen
+    git bisect reset            Beendet das Bisect
+   
 (internals) Datenbank angucken
 ------------------------------
 
