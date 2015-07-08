@@ -14,6 +14,7 @@ Hilfe
 
     . /usr/share/bash-completion/completions/git    Aktiviert Bash-Completion für Git
     
+    git instaweb --httpd /usr/sbin/apache2          Startet integrierte Web-GUI zur Ansicht
 Basics
 ------
 
@@ -49,7 +50,7 @@ Transaktionen
     git commit -a               Commit mit vorherigendem "git add"
 
 Branches
-    git branch                  Listet alle Branches
+    git branch -                Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
     
 Remote Repositories
@@ -104,11 +105,11 @@ Konfiguration
     .gitignore                  Verzeichnis-lokale Ignorier-Liste, ist selbst aber im SCM
     git ls-files --other --ignored --exclude-standard       Zeigt alle irgendwie ignorierten Dateien.
     
-    export GIT_EDITOR=vim       #
+    export GIT_EDITOR=vim       Falls der System-Editor ein anderer ist
 
 
-    git config --global alias.my-show-graph \               Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
-        'log --graph --abbrev-commit --pretty=oneline'
+    git config --global alias.my-log \          Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
+        "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s'"
 
 Konzepte
 --------
@@ -158,6 +159,7 @@ Unterschiede zu SVN
 
 GUI
 ---
+    gitg            Sehr schön um Branches zu visualisieren
     gitk
     git-cola
 
