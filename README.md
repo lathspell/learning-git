@@ -170,4 +170,3 @@ Links
     Interaktive Cheat Sheet
     http://ndpsoftware.com/git-cheatsheet.html
 
-    
