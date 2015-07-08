@@ -50,7 +50,7 @@ Transaktionen
     git commit -a               Commit mit vorherigendem "git add"
 
 Branches
-    git branch -                Listet alle Branches (mit "-a" auch Remotes)
+    git branch -a               Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
     
 Remote Repositories
