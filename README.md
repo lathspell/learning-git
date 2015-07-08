@@ -52,9 +52,12 @@ Transaktionen
 Branches
     git branch -a               Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
+    git merge <BRANCH>          Erstellt einen Merge-Commit (z.B. in master mit "bug10" als angegebenen Branch)
     
 Remote Repositories
     git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
+    git pull                    Holt neue Änderungen aus einem anderen Repository
+    git push                    Überträgt Änderungen in ein anderes Repository
 
 Fehler suchen
 -------------
