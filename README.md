@@ -14,6 +14,7 @@ Hilfe
 
     . /usr/share/bash-completion/completions/git    Aktiviert Bash-Completion für Git
     
+    git instaweb --httpd /usr/sbin/apache2          Startet integrierte Web-GUI zur Ansicht
 Basics
 ------
 
@@ -49,7 +50,7 @@ Transaktionen
     git commit -a               Commit mit vorherigendem "git add"
 
 Branches
-    git branch                  Listet alle Branches
+    git branch -                Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
     
 Remote Repositories
