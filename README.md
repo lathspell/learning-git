@@ -118,6 +118,17 @@ Konfiguration
     git config --global alias.my-log \          Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
         "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s'"
 
+    ```
+    * f355408        Wed Jul 8 20:43:56 2015 +0200 <cb@lathspell.de>  typo
+    *   1c7ba74      Wed Jul 8 20:42:42 2015 +0200 <cb@lathspell.de>  Merge branch 'bug10'
+    |\  
+    | * 3cc59c3      Wed Jul 8 20:37:53 2015 +0200 <cb@lathspell.de>  (bug10) added client gitg
+    | * b192e13      Wed Jul 8 19:02:10 2015 +0200 <cb@lathspell.de>  working in branach bug10
+    * | fd4568d      Wed Jul 8 19:09:27 2015 +0200 <cb@lathspell.de>  cleanup in master
+    |/  
+    * 75d7f86        Tue Jul 7 22:08:41 2015 +0200 <cb@lathspell.de>  m
+    ```
+
 Konzepte
 --------
 
