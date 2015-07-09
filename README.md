@@ -23,8 +23,10 @@ Repository Erstellen:
     git clone                   Erzeugt ein Repository auf Basis eines bestehenden, local oder remote repository.
 
 Änderungen ansehen
-    git diff                    Unterschiede modifizierter Dateien, die noch nicht mit "git add" hinzugefügt wurden, zu ihrem letzten Commit (HEAD).
-    git diff --cached           Unterschiede von mit "git add" markierten Dateien und ihrem letzten Commit (HEAD).
+    git diff                    Unterschiede zwischen Index und Arbeitsverzeichnis (modifizierte Dateien, die noch nicht mit "git add" hinzugefügt wurden)
+    git diff <COMMIT>           Unterschiede zwischen einem Commit (auch HEAD) und dem Arbeitsverzeichnis
+    git diff --cached           Unterschiede zwischen einem Commit (auch HEAD) und dem Index (mit "git add" markierten Dateien)
+    git diff <COMMIT> <COMMIT>  Unterschiede zwischen zwei Commits (auch HEAD und ein Tag)
 
     git log                     Zeigt die Historie des aktuellen Branch
     git log --follow <FILE>     Zeigt die Historie einer Datei inklusive Umbenennungen
@@ -52,6 +54,8 @@ Transaktionen
 Branches
     git branch -a               Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
+    git checkout <BRANCH>       In einen Branch wechseln
+    git checkout -b <BRANCH>    Branch erstellen und direkt dorthin wechseln (wie "git branch" und "git checkout")
     git merge <BRANCH>          Erstellt einen Merge-Commit (z.B. in master mit "bug10" als angegebenen Branch)
     
 Remote Repositories
