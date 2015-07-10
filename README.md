@@ -52,12 +52,79 @@ Transaktionen
                                 (Technisch: "git write-tree" gefolgt von "git write-commit")
     git commit -a               Commit mit vorherigendem "git add"
 
-Branches
+Branches und Merges
     git branch -a               Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
     git checkout <BRANCH>       In einen Branch wechseln
     git checkout -b <BRANCH>    Branch erstellen und direkt dorthin wechseln (wie "git branch" und "git checkout")
     git merge <BRANCH>          Erstellt einen Merge-Commit (z.B. in master mit "bug10" als angegebenen Branch)
+
+    git ls-files -u                     Zeigt die "unmerged" Dateien in allen Versionen (für "git show <HASH>")
+
+                                        ```
+                                        $ git ls-files -u
+                                        100644 8129f257ec5b9d1218cd3118c7806bebe161be57 1       datei1          <- Basis
+                                        100644 dc14b598cbc78d0bddcfd1b4e5bb4e5804883363 2       datei1          <- unser Branch
+                                        100644 13cb3f61f1cb7bb0d666bc9916c0544a348e3bba 3       datei1          <- der zu mergende Branch
+                                        ```
+
+    git diff MERGE_HEAD                 Variante von "git diff HEAD" aber für den zu mergenden Branch
+    git diff :1:datei1 :2:datei1        Vergleicht die Versionen 1 und 2 (nach "git ls-files -u" Notation) der Datei "datei1"
+
+                                        ```
+                                        $ git diff :2:datei1 :3:datei1
+                                        diff --git a/:2:datei1 b/:3:datei1
+                                        index dc14b59..13cb3f6 100644
+                                        --- a/:2:datei1
+                                        +++ b/:3:datei1
+                                        @@ -1,2 +1,2 @@
+                                         pr3
+                                        -Fr 10. Jul 18:33:41 CEST 2015
+                                        +Fr 10. Jul 18:34:16 CEST 2015
+                                        ```
+
+    git log --merge --left-right -p     Zeigt bei Merge-Konflikten die problematischen Diffs
+                                        ("-p" kann auch hier nach Stichwort suchen!)
+
+                                        ```
+                                            $ git log --merge --left-right -p
+                                        commit > 80d068dd6bf2d86f0afb70bba459b8b8253d4c78
+                                        Author: Christian Brunotte <cb@lathspell.de>
+                                        Date:   Fri Jul 10 18:34:22 2015 +0200
+
+                                            pr-3 branch
+
+                                        diff --git a/datei1 b/datei1
+                                        index 8129f25..13cb3f6 100644
+                                        --- a/datei1
+                                        +++ b/datei1
+                                        @@ -1 +1,2 @@
+                                        -Fr 10. Jul 18:32:37 CEST 2015
+                                        +pr3
+                                        +Fr 10. Jul 18:34:16 CEST 2015
+
+                                        commit < 92e7c6978fcef03f4f56d77284cacf149c1e72c5
+                                        Author: Christian Brunotte <cb@lathspell.de>
+                                        Date:   Fri Jul 10 18:34:06 2015 +0200
+
+                                            pr-3 master
+
+                                        diff --git a/datei1 b/datei1
+                                        index 8129f25..dc14b59 100644
+                                        --- a/datei1
+                                        +++ b/datei1
+                                        @@ -1 +1,2 @@
+                                        -Fr 10. Jul 18:32:37 CEST 2015
+                                        +pr3
+                                        +Fr 10. Jul 18:33:41 CEST 2015
+                                        ```
+    git checkout MERGE_HEAD -- datei1   Gezielt "datei1" mit der Version des zu mergenden Branch überschreiben (z.B. weil sie Conflicts hatte)
+
+    git commit                          Hier ohne Optionen committet den Merge mit vorgefertigter Meldung aus .git/MERGE_MSG
+    
+    git merge --abort                   Resettet die Merge Operation *vor* dem Commit
+    git reset --hard HEAD               Resettet die Merge Operation *vor* dem Commit
+    git reset --hard ORIG_HEAD          Resettet den letzten Merge *nach* dem Commit
     
 Remote Repositories
     git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
