@@ -58,10 +58,11 @@ Branches und Merges
     git checkout <BRANCH>       In einen Branch wechseln
     git checkout -b <BRANCH>    Branch erstellen und direkt dorthin wechseln (wie "git branch" und "git checkout")
     git merge <BRANCH>          Erstellt einen Merge-Commit (z.B. in master mit "bug10" als angegebenen Branch)
-    git merge --ff-only/--no-ff Bei einem Merge von einem Upstream Repository, wie es z.B. durch "git pull" gemacht wird,
-                                werden, sofern es keine lokalen Änderungen gibt, einfach die Upstream Commits importiert.
-                                In der Historie sieht es also nicht wie ein "Branch+Merge" sondern wie eine gerade Linie
-                                aus. Das nennt man "fast-forward".
+    git merge --ff-only/--no-ff Bei einem Merge können, wenn der lokale Branch zwischenzeitlich keine Commits hatte,
+                                die Commits des anderen Branch entweder einfach als nachfolgende Commits importiert
+                                werden, so das es im Log wie eine gerade Linie aussieht ("fast-forward") oder über einen
+                                "Merge-Commit" importiert werden, so das im Log der andere Branch deutlich sichtbar ist
+                                ("no-fast-forward").
 
     git ls-files -u                     Zeigt die "unmerged" Dateien in allen Versionen (für "git show <HASH>")
 
