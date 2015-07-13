@@ -139,7 +139,8 @@ Branches und Merges
     git cherry -v master HEAD           Zeigt innerhalb eines Branch an, welche Commits noch nicht im master Branch sind.
     git cherry-pick -x <COMMIT>         Erstellt neuen Commit auf Basis des angegebenen mit extra Zeile "(cherry picked from commit <HASH>)"
 
-    git rebase master                   Versetzt den Anfangspunkt eines Branches (z.B. weil der master inzwischen schon einige Änderungen selbst eingebaut hat)
+    git rebase <BRANCH>                 Versetzt den Anfangspunkt eines Branches (z.B. in Branch mit "master", weil dieser inzwischen schon einige Änderungen selbst eingebaut hat)
+    git rebase -i <COMMITS>             Interaktives Menü zum Löschen/Ändern/Umsortieren der angegebenen Commits (z.B. "master~3" für die letzten 3 in "master")
     
 Remote Repositories
     git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
