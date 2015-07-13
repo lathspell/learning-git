@@ -135,6 +135,9 @@ Branches und Merges
     git reset --soft <COMMIT>           Ändert HEAD Referenz, ignoriert Index und Arbeitsverzeichnis (zum Umschreiben von Commits)
     git reset [--mixed] <COMMIT>        Ändert HEAD Referenz und Index, ignoriert aber das Arbeitsverzeichnis (z.B. weil Kollege parallelen Commit gemacht hat)
     git reset --hard <COMMIT>           Ändert HEAD Referenz, Index und Arbeitsverzeichnis (also quasi ein sauberes "checkout"?)
+
+    git cherry -v master HEAD           Zeigt innerhalb eines Branch an, welche Commits noch nicht im master Branch sind.
+    git cherry-pick -x <COMMIT>         Erstellt neuen Commit auf Basis des angegebenen mit extra Zeile "(cherry picked from commit <HASH>)"
     
 Remote Repositories
     git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
