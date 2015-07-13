@@ -20,6 +20,7 @@ Basics
 
 Repository Erstellen:
     git init                    Erzeugt ein Repo, d.h. ein .git Verzeichnis
+    git init --bare             Erzeugt ein "bare" Repo, d.h. eines ohne Arbeitsverzeichnis, auf einem zentralen Git-Server
     git clone                   Erzeugt ein Repository auf Basis eines bestehenden, local oder remote repository.
 
 Änderungen ansehen
@@ -27,6 +28,8 @@ Repository Erstellen:
     git diff <COMMIT>           Unterschiede zwischen einem Commit (auch HEAD) und dem Arbeitsverzeichnis
     git diff --cached           Unterschiede zwischen einem Commit (auch HEAD) und dem Index (mit "git add" markierten Dateien)
     git diff <COMMIT> <COMMIT>  Unterschiede zwischen zwei Commits (auch HEAD und ein Tag); Vergleicht "Snapshots", also die Tree-Objekte (vgl. "git log"!)
+
+    git format-patch <COMMIT>   Erzeugt eine hübsche Diff Datei
 
     git log                     Zeigt die Historie des aktuellen Branch
     git log --follow <FILE>     Zeigt die Historie einer Datei inklusive Umbenennungen
@@ -143,9 +146,13 @@ Branches und Merges
     git rebase -i <COMMITS>             Interaktives Menü zum Löschen/Ändern/Umsortieren der angegebenen Commits (z.B. "master~3" für die letzten 3 in "master")
     
 Remote Repositories
-    git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
-    git pull                    Holt neue Änderungen aus einem anderen Repository
-    git push                    Überträgt Änderungen in ein anderes Repository
+    
+    git remote add <REMOTE>         Fügt neues Remote-Repository hinzu   
+    git remote show [<REMOTE>]      Zeigt die bekannten entfernten Repositories
+
+    git fetch                       Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
+    git pull                        Holt neue Änderungen aus einem anderen Repository
+    git push                        Überträgt Änderungen in ein anderes Repository
 
 Fehler suchen
 -------------
@@ -270,13 +277,15 @@ Staging Area
     Git hat zwischen Arbeitsverzeichnis und Repository noch die Staging Area im Index in der Transaktionen vorbereitet werden.
     => Git ist verwirrender :-/
 
-
-
 GUI
 ---
     gitg            Sehr schön um Branches zu visualisieren
     gitk
     git-cola
+
+Server
+------
+    git-daemon      Ist bei Debian /usr/lib/git-core/git-daemon und hat Manpage im git-man Paket. Mit systemd und --inetd nutzbar.
 
 Links
 -----
