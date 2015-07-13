@@ -41,7 +41,7 @@ Transaktionen
     git add <FILE>              Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
                                 (Überflüssige, weil unreferenzierte, Objekte werden durch automatisches "git gc" wieder gelöscht)
 
-    git reset <FILE>            Löscht Objekt und Index-Eintrag für Objekt ("unstage for commit"), behält aber lokale Datei.
+    git reset [--mixed] <FILE>  Löscht Objekt und Index-Eintrag für Objekt ("unstage for commit"), behält aber lokale Datei.
     git reset --hard <FILE>     Löscht sowohl Objekt/Index als auch die lokalen Änderungen
 
     git rm <FILE>               Löscht lokale Datei und markiert sie zur Löschung im Index
@@ -126,10 +126,15 @@ Branches und Merges
     git checkout MERGE_HEAD -- datei1   Gezielt "datei1" mit der Version des zu mergenden Branch überschreiben (z.B. weil sie Conflicts hatte)
 
     git commit                          Hier ohne Optionen committet den Merge mit vorgefertigter Meldung aus .git/MERGE_MSG
+    git commit --amend                  Ersetzt das letzte Commit durch ein neues mit anderer Message ("git reset --soft HEAD^" und "git commit -c ORIG_HEAD")
     
     git merge --abort                   Resettet die Merge Operation *vor* dem Commit
     git reset --hard HEAD               Resettet die Merge Operation *vor* dem Commit
     git reset --hard ORIG_HEAD          Resettet den letzten Merge *nach* dem Commit
+
+    git reset --soft <COMMIT>           Ändert HEAD Referenz, ignoriert Index und Arbeitsverzeichnis (zum Umschreiben von Commits)
+    git reset [--mixed] <COMMIT>        Ändert HEAD Referenz und Index, ignoriert aber das Arbeitsverzeichnis (z.B. weil Kollege parallelen Commit gemacht hat)
+    git reset --hard <COMMIT>           Ändert HEAD Referenz, Index und Arbeitsverzeichnis (also quasi ein sauberes "checkout"?)
     
 Remote Repositories
     git fetch                   Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
@@ -152,6 +157,7 @@ Fehler suchen
 (internals) Datenbank angucken
 ------------------------------
 
+    git ls-files                            Zeigt die Datein im Index an, also alle, die Git bekannt gemacht wurden.
     git ls-files --stage                    Zeigt Hash aller Dateien an
 
     git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
@@ -189,7 +195,7 @@ Konfiguration
 
 
     git config --global alias.my-log \          Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
-        "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s'"
+        "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s' -n 15"
 
     ```
     * f355408        Wed Jul 8 20:43:56 2015 +0200 <cb@lathspell.de>  typo
