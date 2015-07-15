@@ -221,6 +221,21 @@ Konfiguration
     * 75d7f86        Tue Jul 7 22:08:41 2015 +0200 <cb@lathspell.de>  m
     ```
 
+Git SVN Unterstützung
+---------------------
+    
+Git kann SVN Projekte mit "git svn ..." Befehlen importieren und als Git Verzeichnis speichern. Änderungen können dann später zum SVN Server geschickt oder von dort geholt werden.
+
+Bei der Benutzung gibt es allerdings etliche Dinge (hier nicht aufgeführt, siehe Buch) zu beachten, u.a. sind die "git svn ..." Befehle weder identisch zu den original Git Befehlen noch zu den SVN Befehlen:
+
+    git svn clone <SVN-URL>     Erstellt ein lokales Git Repository auf Basis der SVN URL ähnlich wie "svn checkout"
+    git svn info                Zeigt die Upstream URL und Revision an
+    git svn log                 Zeigt das Log im SVN Stil mit SVN Revision wie "svn log"
+    git svn blame <DATEI>       Zeigt die Änderungen in einer Datei wie "svn blame"
+    git add / git commit        Zum lokalen Speichern von Änderungen
+    git svn dcommit             Schiebt lokale Commits zum SVN Server wie "svn commit" bzw. "git push" und zeigt neue SVN Revision an
+    git svn rebase              Holt alle neuen Änderungen vom SVN Server wie "svn update" bzw. "git pull" und zeigt neue SVN Revision an
+
 Konzepte
 --------
 
@@ -253,7 +268,6 @@ Konzepte
         committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
 
         3
-
 
 Unterschiede zu SVN
 -------------------
