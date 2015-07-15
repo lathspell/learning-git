@@ -15,6 +15,7 @@ Hilfe
     . /usr/share/bash-completion/completions/git    Aktiviert Bash-Completion für Git
     
     git instaweb --httpd /usr/sbin/apache2          Startet integrierte Web-GUI zur Ansicht
+
 Basics
 ------
 
@@ -166,25 +167,6 @@ Fehler suchen
     git blame <FILE>            letzte Anderungen zeigen
 
     git log -S<TEXT> -p         Zeigt alle commits bei denen TEXT im Diff auftaucht ("Pickaxe" Suche)
-   
-(internals) Datenbank angucken
-------------------------------
-
-    git ls-files                            Zeigt die Datein im Index an, also alle, die Git bekannt gemacht wurden.
-    git ls-files --stage                    Zeigt Hash aller Dateien an
-
-    git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
-
-    zlib-flate -uncompress < <OBJ-FILE>     Datei entpacken und angucken, könnte Binär sein!
-    git cat-file -t <HASH>                  Typ dieses BLOBs anzeigen
-    git cat-file -p <HASH>                  Inhalt dieses BLOBs anzeigen
-
-    git hash-object <FILE>                  Berechnet nur den aktuellen Hash
-    git hash-object --write <FILE>          Erstellt BLOB Objekt und liefert Hash (Teil von "add").
-
-    git write-tree                          Erstellt Tree Objekt der aktuellen Dateien und liefert Hash (Teil von "commit").
-    git commit-tree <HASH>                  Erstellt Commit Objekt für einen Tree (Teil von "commit").
-
 
 Konfiguration
 -------------
@@ -221,8 +203,22 @@ Konfiguration
     * 75d7f86        Tue Jul 7 22:08:41 2015 +0200 <cb@lathspell.de>  m
     ```
 
-Git SVN Unterstützung
----------------------
+Submodule
+---------
+
+Git Submodule sind Unterverzeichnisse in die andere Projekte, wie z.B. benötigte Libraries, geklont werden.
+Diese Submodule sind komplett eigenständig, sie können nicht verändert werden und teilen nicht die Historie des eigentlichen Projekts.
+(Falls das nicht genau das gewünschte ist, soll man nach "git pull -s <SUBTREE>" suchen!)
+
+Die URL der Submodule wird in .gitmodules gespeichert und ist damit selbst unter Versionskontrolle. Damit das Submodul allerdings aktiv ist,
+muss die URL auch in .git/config stehen, was von "git submodule add" oder manuell auch mit "git submodule init/deinit" gemacht werden kann.
+
+    git submodule add <GIT-URL>         Klont ein anderes Git Repository in das Arbeitsverzeichnis; erstellt .gitmodules Datei
+    git submodule summary               Zeigt das Log der neuen Upstream Änderungen aller Submodule
+    git submodule update [--recursive]  Updated die Submodule
+    
+SVN Unterstützung
+-----------------
     
 Git kann SVN Projekte mit "git svn ..." Befehlen importieren und als Git Verzeichnis speichern. Änderungen können dann später zum SVN Server geschickt oder von dort geholt werden.
 
@@ -268,6 +264,24 @@ Konzepte
         committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
 
         3
+   
+(internals) Datenbank angucken
+------------------------------
+
+    git ls-files                            Zeigt die Datein im Index an, also alle, die Git bekannt gemacht wurden.
+    git ls-files --stage                    Zeigt Hash aller Dateien an
+
+    git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
+
+    zlib-flate -uncompress < <OBJ-FILE>     Datei entpacken und angucken, könnte Binär sein!
+    git cat-file -t <HASH>                  Typ dieses BLOBs anzeigen
+    git cat-file -p <HASH>                  Inhalt dieses BLOBs anzeigen
+
+    git hash-object <FILE>                  Berechnet nur den aktuellen Hash
+    git hash-object --write <FILE>          Erstellt BLOB Objekt und liefert Hash (Teil von "add").
+
+    git write-tree                          Erstellt Tree Objekt der aktuellen Dateien und liefert Hash (Teil von "commit").
+    git commit-tree <HASH>                  Erstellt Commit Objekt für einen Tree (Teil von "commit").
 
 Unterschiede zu SVN
 -------------------
