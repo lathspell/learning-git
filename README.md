@@ -305,6 +305,11 @@ Staging Area
     Git hat zwischen Arbeitsverzeichnis und Repository noch die Staging Area im Index in der Transaktionen vorbereitet werden.
     => Git ist verwirrender :-/
 
+TODO:
+* https://git.wiki.kernel.org/index.php/GitSvnComparison
+* http://markmcb.com/2008/10/18/3-reasons-to-switch-to-git-from-subversion/
+* http://www.codeforest.net/git-vs-svn
+
 GUI
 ---
     gitg            Sehr schön um Branches zu visualisieren
