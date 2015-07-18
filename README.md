@@ -235,35 +235,35 @@ Bei der Benutzung gibt es allerdings etliche Dinge (hier nicht aufgeführt, sieh
 Konzepte
 --------
 
-    Datentypen:
-    * BLOB
-    * Tree
-    * Commit
-    * Tag
+Datentypen:
+* BLOB
+* Tree
+* Commit
+* Tag
 
-    Datenbereiche:
-    * Index/Cache
+Datenbereiche:
+* Index/Cache
         Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
-    * Objekte
+* Objekte
 
-        $ zlib-flate -uncompress < .git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443
-        blob 7.*.swp
-
-        $ zlib-flate -uncompress < .git/objects/b0/7237be0ee6ede33983935620532aeaf581e14a | strings
-        tree 75
-        100644 .gitignore
-        \Q8x=O;$C                    // Hash von .gitignore (0a1e..43), mit "od -xa" verifizierbar
-        100644 README.md
-        .........                    // Hash von README.md
-
-        $ zlib-flate -uncompress < .git/objects/c8/c3c96e9f776d2d2e5e8fc097104818a68d8355
-        commit 222
-        tree b07237be0ee6ede33983935620532aeaf581e14a
-        parent fb21eb2b5c0dba041380ab8e48f837c1ba26dbc8
-        author Christian Brunotte <cb@lathspell.de> 1436045859 +0200
-        committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
-
-        3
+    $ zlib-flate -uncompress < .git/objects/a0/1ee289f9a3c65287845c5138783d4f3b24a443
+    blob 7.*.swp
+    
+    $ zlib-flate -uncompress < .git/objects/b0/7237be0ee6ede33983935620532aeaf581e14a | strings
+    tree 75
+    100644 .gitignore
+    \Q8x=O;$C                    // Hash von .gitignore (0a1e..43), mit "od -xa" verifizierbar
+    100644 README.md
+    .........                    // Hash von README.md
+    
+    $ zlib-flate -uncompress < .git/objects/c8/c3c96e9f776d2d2e5e8fc097104818a68d8355
+    commit 222
+    tree b07237be0ee6ede33983935620532aeaf581e14a
+    parent fb21eb2b5c0dba041380ab8e48f837c1ba26dbc8
+    author Christian Brunotte <cb@lathspell.de> 1436045859 +0200
+    committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
+    
+    3
    
 (internals) Datenbank angucken
 ------------------------------
