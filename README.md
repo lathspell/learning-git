@@ -289,23 +289,27 @@ Unterschiede zu SVN
 -------------------
 
 Central vs. Distributed
-    SVN arbeitet immer mit einem zentralen Repository.
-    Git hat in jedem Arbeitsverzeichnis ein vollwertiges Repository und kann das mit beliebig vielen Remote Repositories abgleichen.
-    => Git kommt temporär ohne Netzwerkverbindung aus.
-    => Git kann aus mehrere Quellen verfolgen um daraus selektiv einzelne Commits zu mergen.
+* SVN arbeitet immer mit einem zentralen Repository.
+* Git hat in jedem Arbeitsverzeichnis ein vollwertiges Repository und kann das mit beliebig vielen Remote Repositories abgleichen.
+* => Git kommt temporär ohne Netzwerkverbindung aus, man kann Änderungen nicht nur im Arbeitsverzeichnis machen sondern auch schon, während man noch offline ist, in passende Commits packen.
+* => Da Commits offline und von mehreren Personen gleichzeitig gemacht werden können, kann Git keine fortlaufende Revisionsnummer vergeben sondern muss mit Hash-Werten als "Versionen" arbeiten
+* => Git kann aus mehrere Quellen verfolgen um daraus selektiv einzelne Commits zu mergen.
+* => Git Klone sind komplette Kopien aller gesamten Daten und Historie und damit auch vollständige Backups bzw. Ausgangspunkte für Forks.
 
-Diffs vs. Snapshots
-    SVN arbeitet auf Basis von diffs und speichert Commits auch als solche in den Metadaten.
-    Git speichert deduplizierte Snapshots der kompletten Dateien und Verzeichnisbäume.
-    => Bei vielen kleinen Änderungen an großen Dateien braucht SVN weniger Platz mit seinen Diffs als Git mit seinen vielen Snapshots.
-    => Beim Vergleich von Älteren Commits muss SVN den jeweiligen Stand immer aus den Diffs aufbauen während Git die Objekte sofort verfügbar hat und daher schneller ist.
-    => Das Umbenennen/Verschieben einer Datei ist bei SVN eigentlich ein add/remove während Git nur eine Zeile im Tree-Objekt ändern muss.
-    => Git speichert inhaltlich identische Dateien effektiver (was aber kaum vorkommt, Branches/Tags sind auch bei SVN "cheap"!)
+Diffs vs. Object-Snapshots
+* SVN arbeitet auf Basis von diffs, speichert bei Commits also immer nur die Unterschiede zur letzten Version der jeweiligen Datei.
+* Git erstellt Snapshots der Dateien, speichert sie also auch bei nur kleinen Änderungen komplett ab.
+* => Bei vielen kleinen Änderungen an großen Dateien braucht SVN weniger Platz mit seinen Diffs als Git mit seinen vielen Snapshots. Üblicherweise ist Git aber wesentlich sparsamer!
+* => Beim Vergleich von Älteren Commits muss SVN den jeweiligen Stand immer aus den Diffs aufbauen während Git die Objekte sofort verfügbar hat und daher schneller ist.
+
+Ewige Versionen
+* SVN vergisst eine einmal committete Datei nie wieder; Commits können nicht verändert werden
+* Git kann Commits und Bäume nachträglich umhängen so das es Objekte gibt die irgendwann nicht mehr referenziert und daher gelöscht werden.       
 
 Staging Area
-    SVN kennt nur das Arbeitsverzeichnis und das Repository.
-    Git hat zwischen Arbeitsverzeichnis und Repository noch die Staging Area im Index in der Transaktionen vorbereitet werden.
-    => Git ist verwirrender :-/
+* SVN kennt nur das Arbeitsverzeichnis und das (zentrale) Repository.
+* Git hat zwischen Arbeitsverzeichnis und (lokalem) Repository noch die Staging Area, "Index" genannt, in der Transaktionen vorbereitet werden.
+* => Git ist verwirrender :-/
 
 TODO:
 * https://git.wiki.kernel.org/index.php/GitSvnComparison
