@@ -1,4 +1,4 @@
-GIT
+CLI
 ===
 
 Hilfe
@@ -16,15 +16,16 @@ Hilfe
     
     git instaweb --httpd /usr/sbin/apache2          Startet integrierte Web-GUI zur Ansicht
 
-Basics
-------
+Repository Erstellen
+--------------------
 
-Repository Erstellen:
     git init                    Erzeugt ein Repo, d.h. ein .git Verzeichnis
     git init --bare             Erzeugt ein "bare" Repo, d.h. eines ohne Arbeitsverzeichnis, auf einem zentralen Git-Server
     git clone                   Erzeugt ein Repository auf Basis eines bestehenden, local oder remote repository.
 
 Änderungen ansehen
+------------------
+
     git diff                    Unterschiede zwischen Index und Arbeitsverzeichnis (modifizierte Dateien, die noch nicht mit "git add" hinzugefügt wurden)
     git diff <COMMIT>           Unterschiede zwischen einem Commit (auch HEAD) und dem Arbeitsverzeichnis
     git diff --cached           Unterschiede zwischen einem Commit (auch HEAD) und dem Index (mit "git add" markierten Dateien)
@@ -42,6 +43,8 @@ Repository Erstellen:
     git show-branch --more=10   Zeigt die letzten 10 Commit-Messages
 
 Transaktionen
+-------------
+
     git add <FILE>              Aktueller Stand -> Objekt und Eintrag in Index ("stage to commit")
                                 (Überflüssige, weil unreferenzierte, Objekte werden durch automatisches "git gc" wieder gelöscht)
 
@@ -57,6 +60,8 @@ Transaktionen
     git commit -a               Commit mit vorherigendem "git add"
 
 Branches und Merges
+-------------------
+
     git branch -a               Listet alle Branches (mit "-a" auch Remotes)
     git branch <BRANCH>         Erstellt einen neuen Branch
     git checkout <BRANCH>       In einen Branch wechseln
@@ -127,6 +132,7 @@ Branches und Merges
                                         +pr3
                                         +Fr 10. Jul 18:33:41 CEST 2015
                                         ```
+
     git checkout MERGE_HEAD -- datei1   Gezielt "datei1" mit der Version des zu mergenden Branch überschreiben (z.B. weil sie Conflicts hatte)
 
     git commit                          Hier ohne Optionen committet den Merge mit vorgefertigter Meldung aus .git/MERGE_MSG
@@ -147,6 +153,7 @@ Branches und Merges
     git rebase -i <COMMITS>             Interaktives Menü zum Löschen/Ändern/Umsortieren der angegebenen Commits (z.B. "master~3" für die letzten 3 in "master")
     
 Remote Repositories
+-------------------
     
     git remote add <REMOTE>         Fügt neues Remote-Repository hinzu   
     git remote show [<REMOTE>]      Zeigt die bekannten entfernten Repositories
@@ -232,16 +239,37 @@ Bei der Benutzung gibt es allerdings etliche Dinge (hier nicht aufgeführt, sieh
     git svn dcommit             Schiebt lokale Commits zum SVN Server wie "svn commit" bzw. "git push" und zeigt neue SVN Revision an
     git svn rebase              Holt alle neuen Änderungen vom SVN Server wie "svn update" bzw. "git pull" und zeigt neue SVN Revision an
 
+Plumbing aka interne Datenstrukturen ansehen
+--------------------------------------------
+
+    git ls-files                            Zeigt die Datein im Index an, also alle, die Git bekannt gemacht wurden.
+    git ls-files --stage                    Zeigt Hash aller Dateien an
+
+    git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
+
+    zlib-flate -uncompress < <OBJ-FILE>     Datei entpacken und angucken, könnte Binär sein!
+    git cat-file -t <HASH>                  Typ dieses BLOBs anzeigen
+    git cat-file -p <HASH>                  Inhalt dieses BLOBs anzeigen
+
+    git hash-object <FILE>                  Berechnet nur den aktuellen Hash
+    git hash-object --write <FILE>          Erstellt BLOB Objekt und liefert Hash (Teil von "add").
+
+    git write-tree                          Erstellt Tree Objekt der aktuellen Dateien und liefert Hash (Teil von "commit").
+    git commit-tree <HASH>                  Erstellt Commit Objekt für einen Tree (Teil von "commit").
+
+
 Konzepte
---------
+========
 
 Datentypen:
+-----------
 * BLOB
 * Tree
 * Commit
 * Tag
 
 Datenbereiche:
+--------------
 * Index/Cache
         Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
 * Objekte
@@ -265,24 +293,6 @@ Datenbereiche:
         
         3
    
-(internals) Datenbank angucken
-------------------------------
-
-    git ls-files                            Zeigt die Datein im Index an, also alle, die Git bekannt gemacht wurden.
-    git ls-files --stage                    Zeigt Hash aller Dateien an
-
-    git rev-parse <HASH|Tag>                Zeigt den kompletten Hash zu einem Hash oder einem Tag.
-
-    zlib-flate -uncompress < <OBJ-FILE>     Datei entpacken und angucken, könnte Binär sein!
-    git cat-file -t <HASH>                  Typ dieses BLOBs anzeigen
-    git cat-file -p <HASH>                  Inhalt dieses BLOBs anzeigen
-
-    git hash-object <FILE>                  Berechnet nur den aktuellen Hash
-    git hash-object --write <FILE>          Erstellt BLOB Objekt und liefert Hash (Teil von "add").
-
-    git write-tree                          Erstellt Tree Objekt der aktuellen Dateien und liefert Hash (Teil von "commit").
-    git commit-tree <HASH>                  Erstellt Commit Objekt für einen Tree (Teil von "commit").
-
 Unterschiede zu SVN
 -------------------
 
@@ -311,17 +321,19 @@ TODO:
 * http://www.codeforest.net/git-vs-svn
 
 GUI
----
+===
+
     gitg            Sehr schön um Branches zu visualisieren
     gitk
     git-cola
 
 Server
-------
+======
+
     git-daemon      Ist bei Debian /usr/lib/git-core/git-daemon und hat Manpage im git-man Paket. Mit systemd und --inetd nutzbar.
 
 Links
------
+=====
     
     GIT Cheat Sheet
     https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
