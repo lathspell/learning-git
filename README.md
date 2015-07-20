@@ -295,6 +295,8 @@ Central vs. Distributed
 * => Da Commits offline und von mehreren Personen gleichzeitig gemacht werden können, kann Git keine fortlaufende Revisionsnummer vergeben sondern muss mit Hash-Werten als "Versionen" arbeiten
 * => Git kann aus mehrere Quellen verfolgen um daraus selektiv einzelne Commits zu mergen.
 * => Git Klone sind komplette Kopien aller gesamten Daten und Historie und damit auch vollständige Backups bzw. Ausgangspunkte für Forks.
+* => Git kann nicht, wie SVN, nur einzelne Unterverzeichnisse auschecken (interessant bei Monster-Projekten wie z.B. dem KDE)
+* => Mit Git kann man als Entwickler viele Branches und Merges erzeugen, die aber nur lokal bleiben und damit nicht das zentrale Repo vollmüllen.
 
 Diffs vs. Object-Snapshots
 * SVN arbeitet auf Basis von diffs, speichert bei Commits also immer nur die Unterschiede zur letzten Version der jeweiligen Datei.
@@ -311,8 +313,10 @@ Staging Area
 * Git hat zwischen Arbeitsverzeichnis und (lokalem) Repository noch die Staging Area, "Index" genannt, in der Transaktionen vorbereitet werden.
 * => Git ist verwirrender :-/
 
+Branches
+* Git... FIXME WORK TODO...
+
 TODO:
-* https://git.wiki.kernel.org/index.php/GitSvnComparison
 * http://markmcb.com/2008/10/18/3-reasons-to-switch-to-git-from-subversion/
 * http://www.codeforest.net/git-vs-svn
 
@@ -334,4 +338,7 @@ Links
 * GIT Cheat Sheet - https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
 
 * Interaktive Cheat Sheet - http://ndpsoftware.com/git-cheatsheet.html
+
+* Unterschiede zu SVN - https://git.wiki.kernel.org/index.php/GitSvnComparison
+
 
