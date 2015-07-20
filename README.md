@@ -314,11 +314,8 @@ Staging Area
 * => Git ist verwirrender :-/
 
 Branches
-* Git... FIXME WORK TODO...
-
-TODO:
-* http://markmcb.com/2008/10/18/3-reasons-to-switch-to-git-from-subversion/
-* http://www.codeforest.net/git-vs-svn
+* SVN unterstützt Branches, sie werden traditionell aber eher selten benutzt.
+* Git wurde mit dem Wunsch entwickelt, möglichst einfach mit Branches arbeiten zu können und diese selbst für Kleinigkeiten zu verwenden; hat keine grundsätzlich besseren Features nur irgendwie im Detail bequemer
 
 GUI
 ===
@@ -340,5 +337,6 @@ Links
 * Interaktive Cheat Sheet - http://ndpsoftware.com/git-cheatsheet.html
 
 * Unterschiede zu SVN - https://git.wiki.kernel.org/index.php/GitSvnComparison
-
+* Unterschiede zu SVN - http://www.codeforest.net/git-vs-svn
+* Unterschiede zu SVN (Kritik: scheint "svn switch" nicht zukennen?! Nicht überzeugend.) - http://markmcb.com/2008/10/18/3-reasons-to-switch-to-git-from-subversion/
 
