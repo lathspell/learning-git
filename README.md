@@ -75,17 +75,14 @@ Branches und Merges
 
     git ls-files -u                     Zeigt die "unmerged" Dateien in allen Versionen (für "git show <HASH>")
 
-                                        ```
                                         $ git ls-files -u
                                         100644 8129f257ec5b9d1218cd3118c7806bebe161be57 1       datei1          <- Basis
                                         100644 dc14b598cbc78d0bddcfd1b4e5bb4e5804883363 2       datei1          <- unser Branch
                                         100644 13cb3f61f1cb7bb0d666bc9916c0544a348e3bba 3       datei1          <- der zu mergende Branch
-                                        ```
 
     git diff MERGE_HEAD                 Variante von "git diff HEAD" aber für den zu mergenden Branch
     git diff :1:datei1 :2:datei1        Vergleicht die Versionen 1 und 2 (nach "git ls-files -u" Notation) der Datei "datei1"
 
-                                        ```
                                         $ git diff :2:datei1 :3:datei1
                                         diff --git a/:2:datei1 b/:3:datei1
                                         index dc14b59..13cb3f6 100644
@@ -95,13 +92,11 @@ Branches und Merges
                                          pr3
                                         -Fr 10. Jul 18:33:41 CEST 2015
                                         +Fr 10. Jul 18:34:16 CEST 2015
-                                        ```
 
     git log --merge --left-right -p     Zeigt bei Merge-Konflikten die problematischen Diffs
                                         ("-p" kann auch hier nach Stichwort suchen!)
 
-                                        ```
-                                            $ git log --merge --left-right -p
+                                        $ git log --merge --left-right -p
                                         commit > 80d068dd6bf2d86f0afb70bba459b8b8253d4c78
                                         Author: Christian Brunotte <cb@lathspell.de>
                                         Date:   Fri Jul 10 18:34:22 2015 +0200
@@ -131,7 +126,6 @@ Branches und Merges
                                         -Fr 10. Jul 18:32:37 CEST 2015
                                         +pr3
                                         +Fr 10. Jul 18:33:41 CEST 2015
-                                        ```
 
     git checkout MERGE_HEAD -- datei1   Gezielt "datei1" mit der Version des zu mergenden Branch überschreiben (z.B. weil sie Conflicts hatte)
 
@@ -199,7 +193,6 @@ Konfiguration
     git config --global alias.my-log \          Definiert einen Alias der mit "git my-show-graph" aufgerufen werden kann.
         "log --graph --all --full-history --pretty=format:'%Cred%h%Creset %x09 %ad %C(bold blue)<%ae>%Creset %C(yellow)%d%Creset %s' -n 15"
 
-    ```
     * f355408        Wed Jul 8 20:43:56 2015 +0200 <cb@lathspell.de>  typo
     *   1c7ba74      Wed Jul 8 20:42:42 2015 +0200 <cb@lathspell.de>  Merge branch 'bug10'
     |\  
@@ -208,7 +201,6 @@ Konfiguration
     * | fd4568d      Wed Jul 8 19:09:27 2015 +0200 <cb@lathspell.de>  cleanup in master
     |/  
     * 75d7f86        Tue Jul 7 22:08:41 2015 +0200 <cb@lathspell.de>  m
-    ```
 
 Submodule
 ---------
@@ -323,21 +315,19 @@ TODO:
 GUI
 ===
 
-    gitg            Sehr schön um Branches zu visualisieren
-    gitk
-    git-cola
+* gitg            Sehr schön um Branches zu visualisieren
+* gitk
+* git-cola
 
 Server
 ======
 
-    git-daemon      Ist bei Debian /usr/lib/git-core/git-daemon und hat Manpage im git-man Paket. Mit systemd und --inetd nutzbar.
+* git-daemon      Ist bei Debian /usr/lib/git-core/git-daemon und hat Manpage im git-man Paket. Mit systemd und --inetd nutzbar.
 
 Links
 =====
     
-    GIT Cheat Sheet
-    https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
+* GIT Cheat Sheet - https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf
 
-    Interaktive Cheat Sheet
-    http://ndpsoftware.com/git-cheatsheet.html
+* Interaktive Cheat Sheet - http://ndpsoftware.com/git-cheatsheet.html
 
