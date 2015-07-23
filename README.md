@@ -62,7 +62,7 @@ Transaktionen
 Branches und Merges
 -------------------
 
-    git branch -a               Listet alle Branches (mit "-a" auch Remotes)
+    git branch -a -vv           Listet alle Branches (mit "-a" auch Remotes, mit "-vv" auch "--track" Markierung)
     git branch <BRANCH>         Erstellt einen neuen Branch
     git checkout <BRANCH>       In einen Branch wechseln
     git checkout -b <BRANCH>    Branch erstellen und direkt dorthin wechseln (wie "git branch" und "git checkout")
