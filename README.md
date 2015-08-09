@@ -317,6 +317,11 @@ Branches
 * SVN unterstützt Branches, sie werden traditionell aber eher selten benutzt.
 * Git wurde mit dem Wunsch entwickelt, möglichst einfach mit Branches arbeiten zu können und diese selbst für Kleinigkeiten zu verwenden; hat keine grundsätzlich besseren Features nur irgendwie im Detail bequemer
 
+Workflows
+=========
+
+Siehe https://www.atlassian.com/git/tutorials/comparing-workflows
+
 GUI
 ===
 
