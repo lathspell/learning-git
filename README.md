@@ -322,6 +322,40 @@ Workflows
 
 Siehe https://www.atlassian.com/git/tutorials/comparing-workflows
 
+Centralized Workflow
+--------------------
+
+Es gibt ein zentrales Repository und alle Entwickler klonen dieses. Änderungen
+werden dann nur im lokalen trunk gemacht ohne überhaupt jemals zu branchen.
+Fertige Änderungen werden zum Master gepushed wobei vorher mittels pull die
+neusten Änderungen vom master-trunk gemerged werden. Der Workflow orientiert
+sich stark daran wie traditionelle, zentrale, Systeme wie SVN benutzt werden.
+
+Feature Branch Workflow
+-----------------------
+
+Es gibt ein zentrales Repository und alle Entwickler klonen dieses. Für Änderungen
+wird jeweils lokal ein Feature-Branch erzeugt in dem dann gearbeitet wird.
+Fertige Änderungen werden zusammen mit ihrem Branch veröffentlicht
+(git push -u/--set-upstream) und dann erst gemerged (am besten mit --no-ff damit
+der Merge sichtbar bleibt).
+
+Gitflow Workflow
+----------------
+
+Dieser Workflow ist für große Projekte mit Releases und Hot-Fixes etc.
+Hier werden im zentralen Repository mehrere Branches benutzt:
+* trunk enthält nur Tags für die offiziellen Releases
+* devel enthält ist der Hauptzweig zum arbeiten
+* Feature-Branches zweigen von devel ab und enthalten Änderungen die dann auch nur nach devel zurück gemerged werden.
+* Release-Branches zweigen ebenfalls von devel ab und enden in einem Tag, der dann in trunk gemerged wird. Das erlaubt kleine Änderungen im Release zweig während in devel schon weiter gearbeitet wird.
+* Hotfix-Branches zweigen von den Release-Tags ab und enden in neuen Release-Tags die nach trunk gemerged werden.
+
+Forking Workflow
+----------------
+
+Dieser Workflow entspricht dem Arbeiten auf Github: jeder Entwickler klont das ursprüngliche Repository, läst seines aber für alle anderen erreichbar auf einem Server liegen. Dadurch kann sein Repo jederzeit die Rolle des "offiziellen Repository" übernehmen. Dieses geklonte Repo auf dem Server wird dann wiederum lokal geklont um dort Änderungen vorzunehmen, die dann in das eigene Repo auf dem Server gepushed werden. Die Änderungen auf vom eigenen Server-Repo können dann dem Entwickler des "offiziellen" Repos per Pull-Request bekannt gemacht werden. Alternativ können Leute auch anfangen direkt das Server-Repo zu benutzen.
+
 GUI
 ===
 
