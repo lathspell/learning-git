@@ -260,8 +260,13 @@ Datentypen:
 * Commit
 * Tag
 
+* https://schacon.github.io/gitbook/assets/images/figure/objects-example.png
+
 Datenbereiche:
 --------------
+
+* Siehe https://sselab.de/lab2/public/wiki/sselab/images/thumb/4/4f/Git_workflow.png/800px-Git_workflow.png
+
 * Index/Cache
         Index kann jederzeit gelöscht und aus den Objekten neu aufgebaut werden.
 * Objekte
@@ -383,6 +388,8 @@ Hier werden im zentralen Repository mehrere Branches benutzt:
 * Feature-Branches zweigen von devel ab und enthalten Änderungen die dann auch nur nach devel zurück gemerged werden.
 * Release-Branches zweigen ebenfalls von devel ab und enden in einem Tag, der dann in trunk gemerged wird. Das erlaubt kleine Änderungen im Release zweig während in devel schon weiter gearbeitet wird.
 * Hotfix-Branches zweigen von den Release-Tags ab und enden in neuen Release-Tags die nach trunk gemerged werden.
+
+Siehe https://schacon.github.io/gitbook/assets/images/figure/objects-example.png
 
 Forking Workflow
 ----------------
