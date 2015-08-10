@@ -145,6 +145,9 @@ Branches und Merges
 
     git rebase <BRANCH>                 Versetzt den Anfangspunkt eines Branches (z.B. in Branch mit "master", weil dieser inzwischen schon einige Änderungen selbst eingebaut hat)
     git rebase -i <COMMITS>             Interaktives Menü zum Löschen/Ändern/Umsortieren der angegebenen Commits (z.B. "master~3" für die letzten 3 in "master")
+
+    git tag <TAG>                       Setzt ein einfaches Tag, d.h. eine so benannte Datei in .git/refs/tags mit einem Commit-Hash
+    git tag -a <TAG>                    Schreibt "annotated tag", also ein Objekt vom Typ "tag" das eine Message enthält und auch repliziert werden kann
     
 Remote Repositories
 -------------------
@@ -155,6 +158,7 @@ Remote Repositories
     git fetch                       Holt alle oder bestimmte Objekte und damit auch deren Historie aber ändert noch nicht an den lokalen Dateien.
     git pull                        Holt neue Änderungen aus einem anderen Repository
     git push                        Überträgt Änderungen in ein anderes Repository
+    git ls-remote                   Zeigt alle Heads (Tags, letzten Commits pro Branch) im Remote-Repo an
 
 Fehler suchen
 -------------
