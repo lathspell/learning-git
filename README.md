@@ -37,9 +37,11 @@ Repository Erstellen
     git log --follow <FILE>     Zeigt die Historie einer Datei inklusive Umbenennungen
     git log -5 --decorate=full  Zeigt die letzten 5 Einträge der Historie mit Tags
     git log -p <COMMIT>..<COMMIT>       Zeigt Unterschiede zwischen gemeinsamen Vorfahren und von A und B und dem Commit B (vgl. "git diff"!) <-- ACHTUNG!
+    git log --oneline  :/Workflow       Zeigt alle Commits deren Message mit dem Wort "Workflow" beginnt
     
     git show                    Zeigt aktuelle Änderungen
     git show <COMMIT>           Zeigt Änderungen eines Commits
+    git show <COMMIT>:<FILE>    Zeigt den Inhalt einer Datei zum Zeitpunkt des Commits
     git show-branch --more=10   Zeigt die letzten 10 Commit-Messages
 
 Transaktionen
