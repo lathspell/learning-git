@@ -435,3 +435,4 @@ Links
 * Unterschiede zu SVN - http://www.codeforest.net/git-vs-svn
 * Unterschiede zu SVN (Kritik: scheint "svn switch" nicht zukennen?! Nicht überzeugend.) - http://markmcb.com/2008/10/18/3-reasons-to-switch-to-git-from-subversion/
 
+  "Advanced Git: Graphs, Hashes, and Compression, Oh My!" - https://www.youtube.com/watch?v=ig5E8CcdM9g&spfreload=10
