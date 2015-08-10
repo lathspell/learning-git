@@ -396,15 +396,31 @@ Forking Workflow
 
 Dieser Workflow entspricht dem Arbeiten auf Github: jeder Entwickler klont das ursprüngliche Repository, läst seines aber für alle anderen erreichbar auf einem Server liegen. Dadurch kann sein Repo jederzeit die Rolle des "offiziellen Repository" übernehmen. Dieses geklonte Repo auf dem Server wird dann wiederum lokal geklont um dort Änderungen vorzunehmen, die dann in das eigene Repo auf dem Server gepushed werden. Die Änderungen auf vom eigenen Server-Repo können dann dem Entwickler des "offiziellen" Repos per Pull-Request bekannt gemacht werden. Alternativ können Leute auch anfangen direkt das Server-Repo zu benutzen.
 
+Tools
+=====
+
+Converter
+---------
+
+* SVN zu Git
+
+Man kann das eingebaute SVN-Frontend von Git verwenden um sich einen "Klon" des SVN Repositories zu holen.
+Von Atlassian gibt es aber auch ein kleines Java Programm das den Vorgang übernimmt. Das Tool und eine ausführliche Dokumentation gibt es auf https://www.atlassian.com/git/tutorials/migrating-overview
+
+* RCS zu Git
+
+https://gist.github.com/thwarted/341577/
+
+
 GUI
-===
+---
 
 * gitg            Sehr schön um Branches zu visualisieren
 * gitk
 * git-cola
 
 Server
-======
+------
 
 * git-daemon      Ist bei Debian /usr/lib/git-core/git-daemon und hat Manpage im git-man Paket. Mit systemd und --inetd nutzbar.
 
