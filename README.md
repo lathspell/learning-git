@@ -284,6 +284,39 @@ Datenbereiche:
         committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
         
         3
+
+Mittels der Git "Plumbing" Befehle:
+
+	$ git cat-file -t c8c3c96e9f776d2d2e5e8fc097104818a68d8355
+		commit
+
+	$ git cat-file -p c8c3c96e9f776d2d2e5e8fc097104818a68d8355
+		tree b07237be0ee6ede33983935620532aeaf581e14a
+		parent fb21eb2b5c0dba041380ab8e48f837c1ba26dbc8
+		author Christian Brunotte <cb@lathspell.de> 1436045859 +0200
+		committer Christian Brunotte <cb@lathspell.de> 1436045859 +0200
+
+		3
+
+	$ git cat-file -t b07237be0ee6ede33983935620532aeaf581e14a
+		tree
+
+	$ git cat-file -p b07237be0ee6ede33983935620532aeaf581e14a
+		100644 blob a01ee289f9a3c65287845c5138783d4f3b24a443    .gitignore
+		100644 blob bcd048ce94690d9ea22d8972f6dbddac19140de0    README.md
+	
+	$ git cat-file -t a01ee289f9a3c65287845c5138783d4f3b24a443
+		blob
+
+	$ git cat-file -p a01ee289f9a3c65287845c5138783d4f3b24a443
+		.*.swp
+
+Prüfsummenberechnung:
+	$ printf "blob 7\000.*.swp\n" | sha1sum 
+		a01ee289f9a3c65287845c5138783d4f3b24a443  -
+	$ git hash-object .gitignore
+		a01ee289f9a3c65287845c5138783d4f3b24a443
+
    
 Unterschiede zu SVN
 -------------------
