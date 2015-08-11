@@ -367,8 +367,8 @@ Workflows
 
 Siehe https://www.atlassian.com/git/tutorials/comparing-workflows
 
-Centralized Workflow
---------------------
+Centralized Workflow (SVN-Style)
+--------------------------------
 
 Es gibt ein zentrales Repository und alle Entwickler klonen dieses. Änderungen
 werden dann nur im lokalen trunk gemacht ohne überhaupt jemals zu branchen.
@@ -376,8 +376,8 @@ Fertige Änderungen werden zum Master gepushed wobei vorher mittels pull die
 neusten Änderungen vom master-trunk gemerged werden. Der Workflow orientiert
 sich stark daran wie traditionelle, zentrale, Systeme wie SVN benutzt werden.
 
-Feature Branch Workflow
------------------------
+Feature Branch Workflow (Git-Style)
+-----------------------------------
 
 Es gibt ein zentrales Repository und alle Entwickler klonen dieses. Für Änderungen
 wird jeweils lokal ein Feature-Branch erzeugt in dem dann gearbeitet wird.
@@ -385,8 +385,8 @@ Fertige Änderungen werden zusammen mit ihrem Branch veröffentlicht
 (git push -u/--set-upstream) und dann erst gemerged (am besten mit --no-ff damit
 der Merge sichtbar bleibt).
 
-Gitflow Workflow
-----------------
+Gitflow Workflow (Release-Focused)
+----------------------------------
 
 Dieser Workflow ist für große Projekte mit Releases und Hot-Fixes etc.
 Hier werden im zentralen Repository mehrere Branches benutzt:
@@ -398,8 +398,8 @@ Hier werden im zentralen Repository mehrere Branches benutzt:
 
 Siehe https://schacon.github.io/gitbook/assets/images/figure/objects-example.png
 
-Forking Workflow
-----------------
+Forking Workflow (Github-Style)
+-------------------------------
 
 Dieser Workflow entspricht dem Arbeiten auf Github: jeder Entwickler klont das ursprüngliche Repository, läst seines aber für alle anderen erreichbar auf einem Server liegen. Dadurch kann sein Repo jederzeit die Rolle des "offiziellen Repository" übernehmen. Dieses geklonte Repo auf dem Server wird dann wiederum lokal geklont um dort Änderungen vorzunehmen, die dann in das eigene Repo auf dem Server gepushed werden. Die Änderungen auf vom eigenen Server-Repo können dann dem Entwickler des "offiziellen" Repos per Pull-Request bekannt gemacht werden. Alternativ können Leute auch anfangen direkt das Server-Repo zu benutzen.
 
